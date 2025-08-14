@@ -1,6 +1,5 @@
 #include <Servo.h> // Incluye la librería Servo
 #include <Arduino.h>
-#include <Servo.h>
 
 
 Servo myServo; // Crea un objeto Servo llamado 'myServo'

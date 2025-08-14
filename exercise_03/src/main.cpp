@@ -1,5 +1,6 @@
 // Librerías necesarias para usar el sensor DHT
 #include <DHT.h>
+#include <Arduino.h>
 
 // Definir el pin donde está conectado el sensor
 #define DHTPIN 4  // Pin digital 4
@@ -13,7 +14,7 @@ DHT dht(DHTPIN, DHTTYPE);
 
 void setup() {
   // Iniciar la comunicación serial para ver los datos en la pantalla
-  Serial.begin(115200);
+  Serial.begin(9600);
 
   // Iniciar el sensor DHT
   dht.begin();
