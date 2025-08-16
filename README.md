@@ -19,43 +19,74 @@ Esta es una lista de materiales esenciales diseñada para principiantes con un p
 
 ---
 
-# Cómo compilar un ejercicio desde este repositorio PlatformIO en tu computador
+# Proyecto Arduino-Napo
 
-Este repositorio está organizado por semanas, y cada semana contiene varios ejercicios prácticos.  
-Para compilar un ejercicio específico en PlatformIO, se utiliza un enlace simbólico (`src`) que apunta al ejercicio activo.
+Este repositorio contiene una colecciÃ³n de ejercicios prÃ¡cticos para aprender Arduino utilizando PlatformIO. Cada ejercicio estÃ¡ ubicado en su propia carpeta (`exercise_01`, `exercise_02`, ..., `exercise_13`) y contiene un Ãºnico archivo `.cpp` dentro de `src/`, mÃ¡s cualquier recurso adicional necesario para su funcionamiento.
 
-Aquí vamos a compilar, por ejemplo, el **Ejercicio 2 de la Semana 3 (servo con potenciómetro y botón de inicio)**.
+## Requisitos previos
+
+- Visual Studio Code
+- ExtensiÃ³n de PlatformIO instalada en VS Code
+- Placa Arduino Nano (ATmega328P)
 
 ---
 
-## 🧭 Pasos para compilar un ejercicio
+## CÃ³mo utilizar este proyecto
 
-### 1. Abre la terminal en la raíz del proyecto
+### 1. Conectar el mÃ³dulo
 
-```bash
-cd ~/Documents/repositorios/arduino_projects/Arduino-Napo
+Conecta tu placa Arduino Nano al ordenador usando un cable USB.
+
+### 2. Seleccionar el entorno correcto
+
+En la parte inferior izquierda de VS Code, haz clic en el botÃ³n que muestra el entorno PlatformIO (por ejemplo, `env:exercise_03`) y selecciona el ejercicio que deseas compilar y subir.
+
+### 3. Compilar y subir el cÃ³digo
+
+Una vez seleccionado el entorno:
+
+- Abre la paleta de comandos (`Ctrl+Shift+P` o `Cmd+Shift+P`) y escribe `PlatformIO: Build` para compilar el cÃ³digo.
+- Luego ejecuta `PlatformIO: Upload` para subirlo a tu placa Arduino.
+- TambiÃ©n puedes usar los Ã­conos de check y flecha hacia la derecha en la barra de PlatformIO para compilar y subir respectivamente.
+
+### 4. Monitorizar la salida serial
+
+Si el ejercicio lo requiere, abre el monitor serial con `PlatformIO: Monitor` o haciendo clic en el icono de enchufe. Revisa en `platformio.ini` la velocidad del monitor (`monitor_speed`) para asegurarte de que coincide con el cÃ³digo del ejercicio (por ejemplo, 9600 o 115200).
+
+---
+
+## Estructura del repositorio
+
+```text
+Arduino-Napo/
+â”‚
+â”œâ”€â”€ exercise_01/
+â”‚   â””â”€â”€ src/
+â”‚       â””â”€â”€ ejercicio.cpp
+â”‚
+â”œâ”€â”€ exercise_02/
+â”‚   â””â”€â”€ src/
+â”‚       â””â”€â”€ ejercicio.cpp
+â”‚
+â”œâ”€â”€ ...
+â”‚
+â””â”€â”€ platformio.ini  <-- configuraciÃ³n de PlatformIO para todos los ejercicios
 ```
-### 2. Cambia el ejercicio activo
-Utiliza este comando para que PlatformIO compile el ejercicio que quieras. En este caso, apuntamos al ejercicio 2 de la semana 3:
 
-```bash
-ln -snf week_03_servo_motor/exercise_2_potenciometro_boton_inicio/src src
-```
+Cada entorno `env:exercise_NN` en `platformio.ini` apunta directamente a su carpeta correspondiente y compila Ãºnicamente ese ejercicio.
 
-Puedes cambiar la ruta por cualquier otro ejercicio, por ejemplo:
+---
 
-```bash
-ln -snf week_03_servo_motor/exercise_1_barrido_simple/src src
-```
+## InstalaciÃ³n de librerÃ­as
 
-3. Verifica que el archivo fuente esté presente
+Las dependencias como `DHT sensor library` o `Servo` ya estÃ¡n especificadas por entorno en `platformio.ini`. PlatformIO se encargarÃ¡ automÃ¡ticamente de descargarlas al compilar.
 
-```bash
-ls src
-```
+---
 
-Deberías ver algo como:
+## Notas adicionales
 
-```bash
-potenciometro_mas_boton_inicio.cpp
-```
+- Evita mover archivos manualmente entre carpetas para no romper las rutas del proyecto.
+- Puedes modificar cualquier ejercicio de manera independiente sin afectar los demÃ¡s.
+- Recomendamos usar solo un archivo `.cpp` por carpeta para mantener la estructura limpia y coherente.
+
+Â¡Feliz aprendizaje con Arduino y PlatformIO!
